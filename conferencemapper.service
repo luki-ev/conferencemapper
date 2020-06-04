@@ -1,0 +1,15 @@
+[Unit]
+Description=Jitsi ConferenceMapper Service
+Requires=conferencemapper.socket
+ConditionFileIsExecutable=/usr/bin/gunicorn3
+
+[Service]
+WorkingDirectory=/root/conferencemapper
+ExecStart=/usr/bin/gunicorn3 conferencemapper:app
+Restart=on-failure
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
