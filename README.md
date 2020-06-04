@@ -16,3 +16,10 @@ Add reverse proxy in front of gunicorn3 (nginx)
     location = /conferenceMapper {
         proxy_pass http://127.0.0.1:8001/conferenceMapper?$query_string;
     }
+
+Start it and activate nginx config
+
+    systemctl daemon-reload
+    systemctl enable conferencemapper.socket
+    systemctl start conferencemapper.socket
+    systemctl reload nginx
