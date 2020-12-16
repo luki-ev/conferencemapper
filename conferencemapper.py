@@ -3,7 +3,7 @@ import redis
 import hashlib
 from datetime import timedelta
 
-expire = timedelta(days=1)
+expire = timedelta(days=365)
 digits = 6
 
 app = Flask(__name__)
