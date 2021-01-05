@@ -1,6 +1,8 @@
 Simple Jigasi ConferenceMapper with Redis, Flask and Gunicorn
 =============================================================
 
+This implements the /conferenceMapper part of https://github.com/jitsi/jitsi-meet/blob/master/resources/cloud-api.swagger
+
 Prerequisites: Redis, redis-py, flask, gunicorn
 
 Packages for Ubuntu Server 18.04 & Debian 10
