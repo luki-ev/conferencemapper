@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import redis
 import hashlib
+import urllib
 from datetime import timedelta
 
 expire = timedelta(days=365)
@@ -39,7 +40,11 @@ def mapper():
     
     if conference:
         confid =int(hashlib.sha1(conference.encode("utf-8")).hexdigest(), 16) % 10**digits
-        if r.set(confid, conference) and r.expire(confid, expire):
+        # jitsi internally uses urlencoded room names, so we need to store the conference name urlencoded as well
+        # @ sign is stripped from room names, so we can add that to the list of safe characters, so that room@conference
+        # stays intact
+        encoded_conference = urllib.parse.quote(conference, safe='/@')
+        if r.set(confid, encoded_conference) and r.expire(confid, expire):
             return jsonify({
                 "message": "Successfully retrieved conference mapping",
                 "id": confid,
