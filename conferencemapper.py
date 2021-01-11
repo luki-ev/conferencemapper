@@ -39,6 +39,8 @@ def mapper():
             })
     
     if conference:
+        # jitsi lowercases conference names internally, do this as well, before calculating the PIN
+        conference = conference.lower()
         confid =int(hashlib.sha1(conference.encode("utf-8")).hexdigest(), 16) % 10**digits
         # jitsi internally uses urlencoded room names, so we need to store the conference name urlencoded as well
         # @ sign is stripped from room names, so we can add that to the list of safe characters, so that room@conference
