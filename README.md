@@ -3,11 +3,7 @@ Simple Jigasi ConferenceMapper with Redis, Flask and Gunicorn
 
 This implements the /conferenceMapper part of https://github.com/jitsi/jitsi-meet/blob/master/resources/cloud-api.swagger
 
-Prerequisites: Redis, redis-py, flask, gunicorn
-
-Packages for Ubuntu Server 18.04 & Debian 10
-
-    apt install python3-flask gunicorn3 redis-server, python3-redis
+Prerequisites: Redis, redis-py, flask and a wsgi server like gunicorn
 
 Packages for Ubuntu Server 20.04
 
@@ -17,7 +13,7 @@ Copy conferencemapper.service and conferencemapper.socket to /etc/systemd/system
 
 Adapt /etc/systemd/system/conferencemapper.service to match path to conferencemapper.py
 
-Add reverse proxy in front of gunicorn3 (nginx)
+Add reverse proxy in front of gunicorn (nginx)
 
     location = /conferenceMapper {
         proxy_pass http://127.0.0.1:8001/conferenceMapper?$query_string;
