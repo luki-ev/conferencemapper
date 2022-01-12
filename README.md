@@ -11,7 +11,7 @@ Packages for Ubuntu Server 20.04
 
 Copy conferencemapper.service and conferencemapper.socket to /etc/systemd/system
 
-Adapt /etc/systemd/system/conferencemapper.service to match path to conferencemapper.py
+Adapt /etc/systemd/system/conferencemapper.service to match WorkingDirectory to conferencemapper module directory.
 
 Add reverse proxy in front of gunicorn (nginx)
 
