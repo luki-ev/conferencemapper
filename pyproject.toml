@@ -7,7 +7,7 @@ name = "conferencemapper"
 version = "1.0.0"
 description = "Jigasi ConferenceMapper with Redis, Flask and Gunicorn"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 license = "Apache-2.0"
 authors = [
     {name = "Christoph Settgast", email = "csett86_git@quicksands.de"}
