@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.6"
 license = "Apache-2.0"
 authors = [
-    {name = "Christoph Settgast", email = "csett86@web.de"}
+    {name = "Christoph Settgast", email = "csett86_git@quicksands.de"}
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
