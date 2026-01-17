@@ -26,4 +26,5 @@ Homepage = "https://github.com/luki-ev/conferencemapper"
 "Bug Tracker" = "https://github.com/luki-ev/conferencemapper/issues"
 
 [tool.setuptools.packages.find]
-include = ["conferencemapper*"]
+where = ["."]
+include = ["conferencemapper"]
