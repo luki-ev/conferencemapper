@@ -6,6 +6,11 @@ import fakeredis
 from conferencemapper.app import app, digits
 
 
+def encode_conference_name(name):
+    """Helper function to encode conference names using the same logic as the app."""
+    return urllib.parse.quote(name.lower(), safe='/@')
+
+
 @pytest.fixture
 def redis_mock():
     """Create a fake Redis client for testing."""
@@ -77,7 +82,7 @@ class TestConferenceMapper:
         # Verify the stored value in Redis is URL-encoded
         conf_id = data['id']
         stored_value = redis_mock.get(conf_id)
-        expected_encoded = urllib.parse.quote(conference_name.lower(), safe='/@')
+        expected_encoded = encode_conference_name(conference_name)
         assert stored_value.decode('utf-8') == expected_encoded
 
     def test_mapper_retrieve_with_id(self, client):
@@ -158,7 +163,7 @@ class TestConferenceMapper:
         
         # Check the stored value in Redis
         stored_value = redis_mock.get(conf_id)
-        expected_encoded = urllib.parse.quote(conference_name.lower(), safe='/@')
+        expected_encoded = encode_conference_name(conference_name)
         assert stored_value.decode('utf-8') == expected_encoded
         # Verify @ and / are not encoded
         assert '@' in stored_value.decode('utf-8')
