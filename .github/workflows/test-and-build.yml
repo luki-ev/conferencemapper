@@ -1,4 +1,4 @@
-name: Test and Build
+name: CI
 
 on:
   push:
@@ -18,8 +18,7 @@ jobs:
         python-version: ['3.9', '3.10', '3.11', '3.12', '3.13', '3.14']
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v6
+    - uses: actions/checkout@v6
     
     - name: Set up Python
       uses: actions/setup-python@v6
@@ -33,15 +32,11 @@ jobs:
         pip install -e ".[test]"
     
     - name: Run tests
-      run: |
-        pytest tests/ -v
-    
-    - name: Install build dependencies
-      run: |
-        pip install build
+      run: pytest tests/ -v
     
     - name: Build sdist and wheel
       run: |
+        pip install build
         python -m build
     
     - name: Upload build artifacts
@@ -49,4 +44,3 @@ jobs:
       with:
         name: dist-packages-py${{ matrix.python-version }}
         path: dist/
-        retention-days: 30
