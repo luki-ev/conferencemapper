@@ -25,3 +25,17 @@ Start it and activate nginx config
     systemctl enable conferencemapper.socket
     systemctl start conferencemapper.socket
     systemctl reload nginx
+
+## Development and Testing
+
+To install the package with test dependencies:
+
+    pip install -e ".[test]"
+
+To run the tests:
+
+    pytest tests/
+
+Or with verbose output:
+
+    pytest tests/ -v

@@ -21,6 +21,12 @@ dependencies = [
     "flask",
 ]
 
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+    "fakeredis>=2.0.0",
+]
+
 [project.urls]
 Homepage = "https://github.com/luki-ev/conferencemapper"
 "Bug Tracker" = "https://github.com/luki-ev/conferencemapper/issues"
