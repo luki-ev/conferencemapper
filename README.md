@@ -5,7 +5,7 @@ This implements the /conferenceMapper part of https://github.com/jitsi/jitsi-mee
 
 Prerequisites: Redis, redis-py, flask and a wsgi server like gunicorn
 
-Packages for Ubuntu Server 20.04
+Packages for Ubuntu Server 24.04
 
     apt install python3-flask gunicorn redis-server, python3-redis
 
